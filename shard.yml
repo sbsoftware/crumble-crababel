@@ -1,0 +1,15 @@
+name: crumble-crababel
+version: 0.1.0
+
+authors:
+  - Stefan Bilharz <stefan@sbsoftware.de>
+
+crystal: '>= 1.18.2'
+
+license: MIT
+
+dependencies:
+  crumble:
+    github: sbsoftware/crumble
+  crababel:
+    github: sbsoftware/crababel
