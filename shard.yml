@@ -13,3 +13,5 @@ dependencies:
     github: sbsoftware/crumble
   crababel:
     github: sbsoftware/crababel
+  http_accept:
+    github: BecauseOfProg/http_accept
