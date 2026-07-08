@@ -41,6 +41,26 @@ private class LocalizedResource < Crumble::Resource
   end
 end
 
+private class LocalizedContextView
+  include Crumble::ContextView
+
+  def message
+    t
+  end
+end
+
+private class LocalizedAction < Crumble::Action
+  def message
+    t
+  end
+end
+
+private class LocalizedTurboAction < Crumble::Turbo::Action
+  def message
+    t
+  end
+end
+
 describe Crumble::Crababel do
   it "returns the default locale when Accept-Language is missing" do
     request = HTTP::Request.new("GET", "/", headers: HTTP::Headers.new)
@@ -90,5 +110,27 @@ describe Crumble::Crababel do
     end
 
     res.should contain("Hallo von der Resource")
+  end
+
+  it "is available in Crumble::ContextView classes" do
+    headers = HTTP::Headers{"Accept-Language" => "de"}
+    request_ctx = Crumble::Server::TestRequestContext.new(resource: "/", headers: headers)
+    ctx = Crumble::Server::HandlerContext.new(request_ctx, LocalizedPage.new(request_ctx))
+
+    LocalizedContextView.new(ctx: ctx).message.should eq("Hallo vom Template")
+  end
+
+  it "is available in Crumble::Action subclasses when the base action exists" do
+    headers = HTTP::Headers{"Accept-Language" => "de"}
+    ctx = Crumble::Server::TestRequestContext.new(resource: "/", headers: headers)
+
+    LocalizedAction.new(ctx).message.should eq("Hallo von der Action")
+  end
+
+  it "is available in Crumble::Turbo::Action subclasses when the base action exists" do
+    headers = HTTP::Headers{"Accept-Language" => "de"}
+    ctx = Crumble::Server::TestRequestContext.new(resource: "/", headers: headers)
+
+    LocalizedTurboAction.new(ctx).message.should eq("Hallo von der Turbo Action")
   end
 end
