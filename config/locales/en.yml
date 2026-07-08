@@ -1,4 +1,8 @@
 en:
   greeting: "Hello"
+  localized_page: "Hello from page"
+  localized_resource: "Hello from resource"
 de:
   greeting: "Hallo"
+  localized_page: "Hallo von der Seite"
+  localized_resource: "Hallo von der Resource"
