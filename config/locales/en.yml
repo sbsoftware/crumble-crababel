@@ -1,4 +1,10 @@
 en:
   greeting: "Hello"
+  localized_page: "Hello from page"
+  localized_resource: "Hello from resource"
+  localized_context_view: "Hello from template"
 de:
   greeting: "Hallo"
+  localized_page: "Hallo von der Seite"
+  localized_resource: "Hallo von der Resource"
+  localized_context_view: "Hallo vom Template"
