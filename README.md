@@ -24,7 +24,12 @@ TODO: Write usage instructions here
 
 ## Development
 
-TODO: Write development instructions here
+Install the dependencies and run the specs with the fixture locale files:
+
+```sh
+shards install
+CRABABEL_LOCALES_PATTERN='spec/fixtures/locales/**/*.yml' crystal spec
+```
 
 ## Contributing
 
